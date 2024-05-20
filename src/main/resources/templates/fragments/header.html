@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header">
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=IM+Fell+English"/>
+    <div class="container">
+        <div class="logo">
+            <div class="site-logo">
+                <div class="login-form" style="display:flex;">
+                    <a href="/" style="font-size:30px; letter-spacing: 10px; font-family: IM Fell English;">Coffee</a>
+                    <ul class="login" style="display:flex;">
+                        <li class="has-children active" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                            <a>관리자 메뉴</a>
+                            <ul class="dropdown">
+                                <li><a href="coffeeForm">상품등록</a></li>
+                                <li><a href="">상품관리</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/login" class="btn btn-dark" sec:authorize="isAnonymous()" style="color: white;">LOGIN</a>
+                            <a href="/logout" class="btn btn-dark" sec:authorize="isAuthenticated()"
+                               style="color: white;">LOGOUT</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>
